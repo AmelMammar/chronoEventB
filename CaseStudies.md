@@ -1,6 +1,6 @@
 **An Anti-lock Braking System (ABS)** :
-  [Case study description](ABS.txt)
-  [Event-B model](ABS.zip)   
+  [Case study description](CaseStudiesDescription/ABS.txt)
+  [Event-B model](EventBModels/ABS.zip)   
 
 **Hospital Antibiotic Administration Protocol(HAAP)** : 
   [Case study description](CaseStudiesDescription/HAAP.txt)
