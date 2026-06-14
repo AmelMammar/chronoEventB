@@ -3,6 +3,6 @@
   [Event-B model](ABS.zip)   
 
 **Hospital Antibiotic Administration Protocol(HAAP)** : 
-  [Case study description](HAAP.txt)
+  [Case study description](CaseStudiesDescription/HAAP.txt)
   [Event-B model](HAAP.zip)
   
