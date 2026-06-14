@@ -1,0 +1,6 @@
+Consider a patient receiving intravenous antibiotic treatment in a hospital. The treatment protocol imposes the following temporal requirements:
+1. Each infusion must last between 25 and 35 minutes.
+2. A new infusion must be administered every 8 hours.
+3. Two consecutive infusions must be separated by at least 7 hours and 25 minutes.
+4. A blood test must be performed within 30 minutes after the end of each infusion.
+5. A new infusion cannot start until the previous blood test has been completed.
