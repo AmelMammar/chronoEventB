@@ -67,24 +67,23 @@ The plugin **chronoEventB** permits to specify timing properties on Event-B mode
 
 ### chronoEventB by example
 To create a task using our plugin, click on the  button **Te**. Then select its type. 
-
 <p align="center">
-   <img width="400" height="400" alt="atomicTask" src="https://github.com/user-attachments/assets/a7356655-1b3d-4eda-971a-b876184ac0bd" />
+<img width="1284" height="576" alt="atomicTask" src="https://github.com/user-attachments/assets/bd4c037e-7392-47fc-992c-3e5ec538d27b" />
 </p>
 
-**Case of an atomic task**: an atomic task does not take time to complete, it is instantaneous. The creation of an atomic task produces the following Event-B specificaition. To deal with timing properties, a master variable _CK_ along with a _Progress_ event are defined. This event makes time progress by a given non null amont of time _Step_. Of course, the master varaible and the associated event are created once while creating the first task.
+**Case of an instantaneous task**: an instantaneous task does not take time to complete. The creation of an instantaneous task produces the following Event-B specificaition. To deal with timing properties, a master variable _CK_ along with a _Progress_ event are defined. This event makes time progress by a given non null amont of time _Step_. Of course, the master varaible and the associated event are created once while creating the first task.
 
    <p align="center">
-    <img width="600" height="600" alt="atomicTask" src="https://github.com/user-attachments/assets/fbf52dbc-b290-45f4-927b-56c019835d4b" />
-   </p>
+   <img width="1486" height="766" alt="AttaskCreated" src="https://github.com/user-attachments/assets/d72f74f6-d62c-4fbc-a70d-2989713ebbc7" />
+  </p>
+  
    
-For each task _A_,  we have  a variable _Scheduler_A_ which denotes an increasing sequence of value pairs (_start_, _end_) for each  execution of the task _A_. An atomic task  _A_ is represented by a unique event _Atomic_A_. Event _Atomic_A_ has the follwowing implicit guard/action:
+For each task _A_,  we have  a variable _Scheduler_A_ which denotes an increasing sequence of value pairs (_start_, _end_) for each  execution of the task _A_. An instantaneous task  _A_ is represented by a unique event _Instantaneous_A_. Event _Instantaneous_A_ has the follwowing implicit guard/action:
 
 guard: CK > last(_Scheduler_A_) //to ensure that two different instances of the task _A_ do not occur at the same time  
 action: _Scheduler_A_:=_Append_(_Append_(_Scheduler_A_, _CK_), _CK_)//Append denotes the append operation of sequences
 
-On an atomic task, a min/max timing periodicity constraint my be defined. The periodicity constraint denotes the min/max amount of time that separates the begining of two 
-conseuctive instances. This constraint induces the following implicit guard: 
+On an instantaneous task, a min/max timing periodicity constraint my be defined. The periodicity constraint denotes the min/max amount of time that separates the begining of two conseuctive instances. This constraint induces the following implicit guard: 
 
 guard_per: _Scheduler_A_ $\neq$ $\emptyset$ $\Rightarrow$ CK - **BefLast**(_Scheduler_A_) $\geq$ / $\leq$ PSMin/PSMax //**BefLast**(_Scheduler_A_) denotes the before last element of the sequence _Scheduler_A_.
   
@@ -104,11 +103,11 @@ guard_per: _Scheduler_A_ $\neq$ $\emptyset$ $\Rightarrow$ CK - **BefLast**(_Sche
    
       action:  _Scheduler_A_:=_Append_(_Scheduler_A_, _CK_)
 
- To both atomic and non atomic tasks, two additional properties can be attached:
+ To both instantaneous and non instantaneous tasks, two additional properties can be attached:
  (a) Seperation: puts a constraint on the elapsed time between the end of an ocurrence and the start of the  next one. 
  (b) Periodicity: puts a constraint on the elapsed time between the starts of two consecutive occurences. This constraint is associated with the start event. 
 
-Both properties are attached to the _Start_A_ (resp. _Atomic_A_) event for non-atomic (resp. atomic) task. They induce implicit invariants/guards than can be displayed using [ProB](https://stups.hhu-hosting.de/rodin/prob1/nightly).
+Both properties are attached to the _Start_A_ (resp. _Instantaneous_A_) event for non-instantaneous (resp. instantaneous) task. They induce implicit invariants/guards than can be displayed using [ProB](https://stups.hhu-hosting.de/rodin/prob1/nightly).
 
 **Bi-task properties**
 On two distinct tasks, two ordering constraints can be defined: _FollowedBy_ and _PrecededBy_. A task _A_ must be followed by a task _B_ means that it should exist an occurence of the task _B_ between evry two distinct occurences of _A_. The figure bellow depicts how such dependecy is created. Depending on the task type, users have to select the event _Atomic_A_ (resp. _End_A_) for an atomic task (resp. task with duration).
