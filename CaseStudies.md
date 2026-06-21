@@ -6,4 +6,4 @@
   [Case study description](CaseStudiesDescription/HAAP.txt)
   [Event-B model](EventBModels/HAAP.zip)
   
-To import a case study, import first the theory as described in  [Readme](README.md), then the zip file of the case study in a same manner. 
+To import a case study, import first the theory as described in  [Readme](README.md), then the zip file of the case study in a same manner. If some proofs appear unproved, replay the proofs by by clicking right as shown: 
